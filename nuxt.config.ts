@@ -1,7 +1,7 @@
 /*
  * @Author: EDSPower
  * @Date: 2024-05-07 20:13:31
- * @LastEditTime: 2024-05-08 16:37:09
+ * @LastEditTime: 2024-05-11 11:24:01
  * @LastEditors: EDSPower
  * @FilePath: \vue-nuxt\nuxt.config.ts
  * 766782971@qq.com
@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@import "@/assets/scss/_var.scss"; @import "@/assets/scss/global.scss";`,
+          additionalData: `@use "~/assets/scss/_var.scss" as *;@use "~/assets/scss/global.scss" as *;`,
         },
       },
     },
