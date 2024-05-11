@@ -1,0 +1,60 @@
+html {
+  body {
+    margin: 0;
+  }
+
+  ol,
+  ul,
+  li {
+    list-style: none;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  button {
+    border: none;
+    outline: none;
+  }
+}
+
+.btn-touch {
+  cursor: pointer;
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+// 媒体查询
+.max-width {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@screen xs {
+}
+
+@screen sm {
+  .max-width {
+    max-width: 640px;
+  }
+}
+
+@screen md {
+  .max-width {
+    max-width: 768px;
+  }
+}
+
+@screen lg {
+  .max-width {
+    max-width: 1024px;
+  }
+}
+
+@screen lgg {
+  .max-width {
+    max-width: 1400px;
+  }
+}

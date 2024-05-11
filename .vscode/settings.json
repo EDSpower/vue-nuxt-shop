@@ -1,0 +1,35 @@
+{
+  // 保存自动格式化
+  "editor.formatOnSave": true,
+
+  // 输入提醒
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+
+  // 以下文件格式用prettier插件
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  //css 或less里面 使用at-rule规则 不再警告
+  "css.validate": false,
+  "scss.validate": false,
+
+  //eslint
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "eslint.alwaysShowStatus": true,
+  "cSpell.words": ["imgs"]
+}
