@@ -1,19 +1,33 @@
 <!--
  * @Author: EDSPower
  * @Date: 2024-05-08 11:01:25
- * @LastEditTime: 2024-05-11 10:54:28
+ * @LastEditTime: 2024-05-14 17:47:04
  * @LastEditors: EDSPower
  * @FilePath: \vue-nuxt\pages\index\index.vue
  * 766782971@qq.com
 -->
 <script lang="ts" setup>
 const shopData = reactive<{ list: any[] }>({ list: [] });
-const { data } = await useFetch<any>(
-  'https://api.airmart.vip/unx/home/match/v3/search?page=0&limit=4&queryGroups=[["type","in",[1,4,5]],["category_id","eq","6512a55f300ae8005d43a7fe"],["module_id","eq","6512a55f300ae8005d43a806"]]'
-);
-if (data.value) {
-  shopData.list = data.value.data.list;
-}
+const page = ref(0);
+
+const getAsyncList = async (val: number) => {
+  page.value = val;
+  const { data } = await useFetch<any>(
+    `https://api.airmart.vip/unx/home/match/v3/search`,
+    {
+      query: {
+        page: page.value,
+        limit: 4,
+      },
+    }
+  );
+  console.log("data: ", data);
+  if (data.value) {
+    shopData.list = data.value.data.list;
+  }
+};
+
+await getAsyncList(0);
 </script>
 <template>
   <div class="page-index">
@@ -31,8 +45,18 @@ if (data.value) {
     </div>
     <div class="shop-list max-width">
       <div class="list-top">
-        <p class="top-title">Shop by Category</p>
-        <p class="top-all">view all</p>
+        <p class="top-title">Shop by Category {{ page }}</p>
+        <p
+          class="top-all"
+          @click="
+            () => {
+              getAsyncList(page + 1);
+            }
+          "
+        >
+          <!-- view all -->
+          Next Page
+        </p>
       </div>
       <ul class="list-content">
         <li v-for="item in shopData.list" :key="item" class="list-li">
@@ -99,6 +123,7 @@ if (data.value) {
       }
       .top-all {
         color: $fontColor2;
+        cursor: pointer;
       }
     }
     .list-content {
@@ -108,6 +133,7 @@ if (data.value) {
         position: relative;
         border-radius: 8px;
         overflow: hidden;
+        cursor: pointer;
         .li-img {
           display: block;
           margin: 0 auto;
